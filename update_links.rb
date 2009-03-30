@@ -35,4 +35,3 @@ def update_permalinks
 	end
 
 end
-update_permalinks
