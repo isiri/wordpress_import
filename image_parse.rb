@@ -20,7 +20,7 @@ end
 def process_images
 
 	all_posts = WpPost.find(:all)
-	root_image_folder = '/var/www/wordpress/wp-content/uploads'
+	root_image_folder = '/wp-content/uploads'
 	i = 0
 
 	all_posts.each do |post|
@@ -33,7 +33,7 @@ def process_images
 		                           |f|                      
 		                           img_str = f.read
 		                          }    
-	    dest_dir = "#{root_image_folder}/#{post.post_date.year}/#{post.post_date.month}"                              
+	    dest_dir = "#{root_image_folder}/#{post.post_date.year}/#{post.post_date.month}"                  
 	    FileUtils.mkdir_p dest_dir        
 	    dest_image = "#{dest_dir}/#{img_name}_#{i}"
 	    File.open(dest_image, 'w') {|f| f.write(img_str) }          
@@ -48,3 +48,5 @@ def process_images
 	end  
 
 end
+
+process_images
