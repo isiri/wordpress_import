@@ -4,6 +4,7 @@ require 'importer.rb'
 require 'splitter.rb'
 require 'image_parse.rb'
 require 'update_links'
+require 'configure_wordpress.rb'
 require 'ftools'
 
 file_path = '/media/sda2/wordpress_import/mt-export.txt'
@@ -35,6 +36,9 @@ puts "Done updating permalinks"
 
 puts "Processing images"
 process_images
+
+puts "Configuring wordpress"
+configure_wordpress
 
 
 
