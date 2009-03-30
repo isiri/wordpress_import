@@ -20,7 +20,7 @@ def start_import
 
 	login_form = page.form('loginform')
 	login_form.log = 'admin'
-	login_form.pwd = '*0&mp6#XofLm'
+	login_form.pwd = 'dNdcCwtSg9VM'
 
 	page = agent.submit(login_form)
 

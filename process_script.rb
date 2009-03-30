@@ -6,9 +6,9 @@ require 'image_parse.rb'
 require 'update_links'
 require 'ftools'
 
-file_path = '/media/sda1/wordpress_import/mt-export.txt'
-allowed_length = 5000000
-dest_dir = '/media/sda1/wordpress_import/splitted_files'
+file_path = '/media/sda2/wordpress_import/mt-export.txt'
+allowed_length = 1000000
+dest_dir = '/media/sda2/wordpress_import/splitted_files'
 wordpress_import_file = '/var/www/wordpress/wp-content/mt-export.txt'
 
 puts "Starting import file split"

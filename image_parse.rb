@@ -20,8 +20,8 @@ end
 def process_images
 
 	all_posts = WpPost.find(:all)
-	root_image_folder = '/wp-content/uploads'
-	i = 0
+	wordpress_root = '/var/www'
+	site_root = '/wordpress/wp-content/uploads'
 
 	all_posts.each do |post|
 	  html_doc = Nokogiri::HTML(post.post_content)
@@ -33,17 +33,18 @@ def process_images
 		                           |f|                      
 		                           img_str = f.read
 		                          }    
-	    dest_dir = "#{root_image_folder}/#{post.post_date.year}/#{post.post_date.month}"                  
-	    FileUtils.mkdir_p dest_dir        
-	    dest_image = "#{dest_dir}/#{img_name}_#{i}"
-	    File.open(dest_image, 'w') {|f| f.write(img_str) }          
-	    img.attributes['src'].value = dest_image
+            img_root = "/#{post.post_date.year}/#{post.post_date.month}"
+	    dest_save_dir = "#{wordpress_root}#{site_root}/#{img_root}"                  
+	    FileUtils.mkdir_p dest_save_dir
+	    dest_save_image = "#{dest_save_dir}/#{img_name}"
+	    dest_site_image = "#{site_root}/#{img_root}/#{img_name}"
+	    File.open(dest_save_image, 'w') {|f| f.write(img_str) }          
+	    img.attributes['src'].value = dest_site_image
 	    if img.parent.node_name == 'a'
-	      img.parent.attributes['href'].value = dest_image     
+	      img.parent.attributes['href'].value = dest_site_image     
 	    end
 	    post.post_content = html_doc.inner_html         
 	    post.save               
-	    i += 1
 	  end
 	end  
 
