@@ -48,5 +48,3 @@ def process_images
 	end  
 
 end
-
-process_images
