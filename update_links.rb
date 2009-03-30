@@ -1,19 +1,4 @@
 require 'url_mapping.rb'
-require 'rubygems'
-require 'activerecord'
-
-ActiveRecord::Base.establish_connection(
-  :adapter  => "mysql",
-  :database =>  "word_press2",
-  :username =>  "root",
-  :password =>  "isiri",
-  :socket => '/tmp/mysql.sock'
-)
-
-class WpPost < ActiveRecord::Base
-  set_primary_key 'ID'
-  set_table_name "wp_posts" 
-end
 
 def update_permalinks
 

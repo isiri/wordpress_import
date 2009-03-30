@@ -1,28 +1,20 @@
-require 'logger'
-require 'pathname'
+require 'global_settings'
 require 'importer.rb'
 require 'splitter.rb'
 require 'image_parse.rb'
-require 'update_links'
+require 'update_links.rb'
 require 'configure_wordpress.rb'
-require 'ftools'
-
-file_path = '/media/sda2/wordpress_import/mt-export.txt'
-allowed_length = 1000000
-dest_dir = '/media/sda2/wordpress_import/splitted_files'
-wordpress_import_file = '/var/www/wordpress/wp-content/mt-export.txt'
 
 puts "Starting import file split"
-
-dest_files = split(file_path, dest_dir, allowed_length)
+dest_files = split($wordpress_export_filename, $split_file_path, $allowed_length)
 
 puts "Successfully split the files into #{dest_files.join(',')}"
 
 dest_files.each do |dest_file|
   puts "Starting import of #{dest_file}..."
   
-  dest_path = File.join(dest_dir, dest_file)
-  File.copy(dest_path, wordpress_import_file)
+  dest_path = File.join($split_file_path, dest_file)
+  File.copy(dest_path, $wordpress_import_file)
   
   start_import
   puts "Finished importing the file #{dest_file}"

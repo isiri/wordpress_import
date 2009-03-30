@@ -1,30 +1,15 @@
-require 'rubygems'
-require 'mechanize'
-
-        #moneky patch to avoid timeout error
-	module Net 
-	    class BufferedIO
-	      def rbuf_fill
-		#timeout(@read_timeout,ProtocolError) {
-		  @rbuf << @io.sysread(1024)
-		#}
-	      end  
-	    end
-	end  
-
-
 def start_import
 
 	agent = WWW::Mechanize.new
-	page = agent.get('http://localhost/wordpress/wp-login.php/')
+	page = agent.get("#{$base_url}/wp-login.php/")
 
 	login_form = page.form('loginform')
-	login_form.log = 'admin'
-	login_form.pwd = 'dNdcCwtSg9VM'
+	login_form.log = $wordpress_username
+	login_form.pwd = $wordpress_password
 
 	page = agent.submit(login_form)
 
-	page = agent.get('http://localhost/wordpress/wp-admin/admin.php?import=mt')
+	page = agent.get("#{$base_url}/wp-admin/admin.php?import=mt")
 
 	import_form = page.forms[1]
 	page = agent.submit(import_form)
