@@ -16,7 +16,7 @@ def update_users
     user_form = page.forms[0]    
     if ((user_form.email == "" or user_form.email.nil?) and user_form.role == 'subscriber')
       user_form.role = 'author'
-      user_form.email = 'change@me.com'
+      user_form.email = 'change@no_domain.com'
       user_form.pass1 = 'change_this_password'
       user_form.pass2 = 'change_this_password'
       page = agent.submit(user_form)    
