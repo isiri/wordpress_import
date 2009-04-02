@@ -22,12 +22,14 @@ $split_filename = 'mt_export_txt_' # split files will be as mt_export_txt_0, mt_
 
 #urls
 $base_url = 'http://localhost/wordpress'
+$root_url = 'http://localhost'
 $site_root = '/wordpress/wp-content/uploads'
 
 #others
-$allowed_length = 1000000 #size of individual files after splitting the export file
+$allowed_length = 5000000 #size of individual files after splitting the export file
 $wordpress_username = 'admin'
-$wordpress_password = 'CwGeOAqFfCRn'
+$wordpress_password = 'moR#GOZ$Ea71'
+#$wordpress_password = 'wX!txqPhzcDZ' for word_press2 db
 
 ActiveRecord::Base.establish_connection(
   :adapter  => "mysql",
