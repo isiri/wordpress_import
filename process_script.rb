@@ -4,6 +4,7 @@ require 'splitter.rb'
 require 'image_parse.rb'
 require 'update_links.rb'
 require 'configure_wordpress.rb'
+require 'update_users.rb'
 
 puts "Starting import file split"
 dest_files = split($wordpress_export_filename, $split_file_path, $allowed_length)
@@ -32,5 +33,7 @@ process_images
 puts "Configuring wordpress"
 configure_wordpress
 
+puts "Updating users"
+update_users
 
 
