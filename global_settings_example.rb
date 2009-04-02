@@ -46,6 +46,11 @@ class WpPost < ActiveRecord::Base
   set_table_name "wp_posts" 
 end
 
+class WpUser < ActiveRecord::Base
+  set_primary_key 'ID'
+  set_table_name "wp_users" 
+end
+
 #moneky patch to avoid timeout error
 module Net 
     class BufferedIO
