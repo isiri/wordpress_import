@@ -26,7 +26,15 @@ def start_import
 	end
 
 	page = agent.submit(assign_users_form)
-
-	return true
+        
+        state = false
+        page.search('h3').each do |h3_tag| 
+          if h3_tag.inner_text.match(/All done/)           
+            puts ("State All Done")
+            state = true 
+          end
+        end
+        
+	return state
 
 end
