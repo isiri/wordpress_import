@@ -33,7 +33,3 @@ process_images
 puts "Configuring wordpress"
 configure_wordpress
 
-puts "Updating users"
-update_users
-
-
