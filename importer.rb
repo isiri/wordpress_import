@@ -1,4 +1,3 @@
-require 'global_settings.rb'
 def start_import
 
 	agent = WWW::Mechanize.new
@@ -37,5 +36,3 @@ def start_import
 	return state
 
 end
-
-start_import
