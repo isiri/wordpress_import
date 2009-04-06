@@ -9,6 +9,7 @@ require 'open-uri'
 require 'pathname'
 require 'ftools'
 require 'mechanize'
+require 'fileutils'
 
 #absoulte paths
 $wordpress_root = '/var/www'

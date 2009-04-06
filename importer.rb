@@ -1,3 +1,4 @@
+require 'global_settings.rb'
 def start_import
 
 	agent = WWW::Mechanize.new
@@ -18,13 +19,11 @@ def start_import
 
 	i = 0
 	page.search('li').each do |l|
-	  if l.parent.node_name == 'form'
-	    select_list = assign_users_form.send("userselect[#{i}]")
-	    select_list = l.search('strong').inner_html
+	  if l.parent.node_name == 'form'	  
+	    assign_users_form.set_fields("userselect[#{i}]" => l.search('strong').inner_html)	    
 	    i += 1
 	  end
 	end
-
 	page = agent.submit(assign_users_form)
         
         state = false
@@ -38,3 +37,5 @@ def start_import
 	return state
 
 end
+
+start_import

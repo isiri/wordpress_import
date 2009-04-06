@@ -1,3 +1,4 @@
+require 'set_up_top_level_cats_plugin.rb'
 def configure_wordpress
 	agent = WWW::Mechanize.new
 	page = agent.get("#{$base_url}/wp-login.php/")
@@ -13,5 +14,7 @@ def configure_wordpress
         permalink_form = page.forms.first
         permalink_form.permalink_structure = '/%year%/%monthnum%/%postname%.html'
         
-        page = agent.submit(permalink_form)          
+        page = agent.submit(permalink_form)        
+        
+        setup_top_level_cats  
 end
