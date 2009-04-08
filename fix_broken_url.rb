@@ -40,7 +40,7 @@ def fix_broken_url
 	  (html_doc/"a").each do |link|  
   	    link_ref = link.attributes['href'].to_s	
 	    if link_ref.to_s.strip.match(/^www/)
-	      link.attributes['href'].value = "#http://{link.attributes['href']}"
+	      link.attributes['href'].value = "#http://#{link.attributes['href']}"
 	      comment.comment_content = html_doc.inner_html         
               puts "Updating comment content for -#{comment.comment_ID} - #{link.attributes['href']}"   	      
               logger.error "Updating post content for -#{comment.comment_ID} - #{link.attributes['href']}"              
