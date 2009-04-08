@@ -52,6 +52,11 @@ class WpUser < ActiveRecord::Base
   set_table_name "wp_users" 
 end
 
+class WpComment < ActiveRecord::Base
+  set_primary_key 'comment_ID'
+  set_table_name "wp_comments" 
+end
+
 #moneky patch to avoid timeout error
 module Net 
     class BufferedIO
